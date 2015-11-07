@@ -9,9 +9,10 @@
 <body>
 
   <%= render 'layouts/navigation' %>
-  <div class="container">
+  <div style="height:80%;" class="container">
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </div>
-  <%= render 'layouts/footer' %>
+  
 </body>
 </html>
