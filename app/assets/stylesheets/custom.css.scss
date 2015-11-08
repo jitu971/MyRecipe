@@ -89,29 +89,29 @@ h1{
   height:100%;
 }
 
-#recipedivblock{
+#recipedivcontainer{
   padding-left:20px;
   padding-right:20px;
-  //background-color:#ff0000;
-  height:155px;
+  background-color:#ff0000;
+  height:auto;
   border-radius:5px;
 }
 
 #innerrecipediv{
   float:left;
   width:30%; 
-  //background-color:#ff0aff;
+  background-color:#ff0aff;
   border-radius:5px;
 }
 #dividerdivblock{
   float:left;
   width:5%;
-  height:100%; 
-  //background-color:#afd0ff;
+  height:auto; 
+  background-color:#afd0ff;
   border-radius:5px;
 }
 #dividerline{
-  height:100%; 
+  height:auto; 
   margin-left:15px; 
   border-left: thick solid #D5CECE;
 }
