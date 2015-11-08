@@ -25,6 +25,13 @@
  # <<: *default
   #database: db/production.sqlite3
 
+test:
+  adapter: postgresql
+  host: localhost
+  database: demo
+  username: postgres
+  password: postgres
+
 
 development:
   adapter: postgresql
