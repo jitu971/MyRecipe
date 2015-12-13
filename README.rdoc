@@ -47,6 +47,22 @@ email:string
 -email must be valid
 
 
+Chefs:
+What we have already
+-Chef model and validation
+-chefs table with chefname and email
+
+What we nedd to do
+-Add password to chefs table so chefs can be authenticated and logged in
+-Use email as login credential, since email is unique
+-Ability to register new chefs to use the app
+-Ability to display chef profile
+-Ability to list chefs using the app
+-Ability for chefs to login and logout
+-Restrict action to create recipe edit and update for loggef in chef only
+-Restricting edit of recipe by chefs who created the recipes
+
+
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
