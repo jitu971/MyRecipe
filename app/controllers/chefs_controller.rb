@@ -24,7 +24,8 @@ class ChefsController < ApplicationController
     if @chef.save
       flash[:success] = "Your Account has been created successfully"
       session[:chef_id] = @chef.id #once user register it will automatically logged in
-      redirect_to chef_path(@Chef)#recipes_path
+      #redirect_to chef_path(@chef)#recipes_path
+      redirect_to recipes_path
     else
       render 'new'
     end
