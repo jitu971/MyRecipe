@@ -27,4 +27,5 @@ class Recipe < ActiveRecord::Base
         error.add(:picture, "Should be less then 5MB")
       end
     end
+
 end
