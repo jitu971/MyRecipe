@@ -1,7 +1,66 @@
 <%= render 'shared/page_title', title: @recipe.name %>
 
-<div class="row">
+<table style="margin-top:20px;" cellspacing="10">
+  <tr>
+    <td colspan="2" style="padding-left:10px;">
+      <div class="td_button_padding">
+      <%= link_to "Return To Recipes", recipes_path, class: "btn btn-warning btn-small" %>
+      </div>
+    </td>
+    <td style="text-align:center">
+      <div class="td_button_padding">
+        <% if logged_in? && @recipe.chef == current_user %>
+          <%= link_to "EditRecipe", edit_recipe_path(@recipe), class: "btn btn-success" %>
+        <% end %>
+      </div>
+    </td>
+  </tr>
+  <tr class="well">
+    <td style="width:15%">
+      <div class="td_image_padding">
+        <section class="chef_info center">
+          <%= link_to gravatar_for(@recipe.chef, size: 160), chef_path(@recipe.chef)%>
+          <p>
+            <h5>Brought to you by: <%= @recipe.chef.chefname %></h5>
+          </p> 
+        </section> 
+      </div>
+    </td>
+    <td style="width:60%">
+      <div style="padding-left:20px; padding-right:20px;">
+      <h3 style="text-align:center"><i><u><%= @recipe.summary %></u></i></h3>
+      <p>Styles:<%= render @recipe.styles %></p>
+      <p>Ingredients:<%= render @recipe.ingredients %></p>
+      <p>
+        <strong>Steps:</strong>
+      </p>
+        <%= simple_format(@recipe.description) %>
+        <div class="pull-right">
+          <%= link_to like_recipe_path(@recipe, like: true), method: :post do %>
+            <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= @recipe.thumbs_up_total %> 
+           <% end %> &nbsp&nbsp&nbsp&nbsp
+          <%= link_to like_recipe_path(@recipe, like: false), method: :post do %>
+            <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp <%= @recipe.thumbs_down_total %> 
+           <% end %> 
+        </div>
+        </div>
+    </td>
+    <td style="width:25%">
+      <div class="td_image_padding">
+      <%= image_tag(@recipe.picture.url, size: "250x200", class: "gravatar") if @recipe.picture? %>
+      </div>
+    </td>
+  </tr>
+</table>
 
+
+
+
+
+
+<!-- Act as Comment (if false)-->
+<% if false %> 
+<div class="row">
   <div class="col-md-3 pull-right center">
     <%= link_to gravatar_for(@recipe.chef, size: 200), chef_path(@recipe.chef)%>
     <p>
@@ -38,3 +97,4 @@
 </div>
 
 <h5><%= link_to "Return To Recipes", recipes_path, class: "btn btn-warning btn-small" %></h5>
+<% end %> <!-- Act as Comment (end for if false)-->
