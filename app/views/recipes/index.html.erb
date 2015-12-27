@@ -15,10 +15,12 @@
   <% @recipes.each do |recipe| %>
   <tr>
     <td style="width:15%;"> 
+      <div style="padding-left:5px; padding-right:5px;">
         <section class="chef_info center">
           <%= link_to gravatar_for(recipe.chef, size: 130), chef_path(recipe.chef) %>
           <h5>Chef name: <%= recipe.chef.chefname%></h5>
         </section>
+      </div>
     </td>
     <td style="width:65%;">
       <div class="well">     
@@ -53,7 +55,7 @@
       </div>
     </td>
     <td style="width:20%">
-      <div class="">
+      <div style="padding-left:5px; padding-right:5px;">
         <section class="center">
           <%= image_tag(recipe.picture.url, size: "230x180", class: "gravatar") if recipe.picture? %> 
         </section>
