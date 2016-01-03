@@ -14,30 +14,30 @@
     </td>
     <td> 
         <div align="center" class="div_chef_recipes_show">
-        <% if @recipes.exists? %>
-          <% if @recipes.count >= 3 %>
-            <%= will_paginate @recipes %>
-            <% @recipes.each do |recipe| %>
-              <h4>
-                <i><b>Recipe:</b></i>
-                <%= link_to recipe.name, recipe_path(recipe) %>
-              </h4>
-            <% end %>
-          <% else %>
-            <div style="padding-top:50px;">
+          <% if @recipes.exists? %>
+            <% if @recipes.count >= 3 %>
+              <%= will_paginate @recipes %>
               <% @recipes.each do |recipe| %>
                 <h4>
                   <i><b>Recipe:</b></i>
                   <%= link_to recipe.name, recipe_path(recipe) %>
                 </h4>
               <% end %>
+            <% else %>
+              <div style="padding-top:50px;">
+                <% @recipes.each do |recipe| %>
+                  <h4>
+                    <i><b>Recipe:</b></i>
+                    <%= link_to recipe.name, recipe_path(recipe) %>
+                  </h4>
+                <% end %>
+              </div>
+            <% end %>  
+          <% else %>
+            <div style="padding-top:50px;">
+              <h2><i><b>Create Your First Recipe......</b></i></h2>
             </div>
-          <% end %>  
-        <% else %>
-          <div style="padding-top:50px;">
-            <h2><i><b>Create Your First Recipe......</b></i></h2>
-          </div>
-        <% end %>
+          <% end %>
         </div>
     </td>
   </tr>
