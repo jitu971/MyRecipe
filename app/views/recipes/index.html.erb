@@ -10,7 +10,10 @@
 </ul>
 
 
-<%= will_paginate %>
+<div class="center">
+  <%= will_paginate %>
+</div>
+
 <table>
   <% @recipes.each do |recipe| %>
   <tr>
@@ -29,8 +32,12 @@
           <%= link_to recipe.name, recipe_path(recipe) %>
         </h4>
         <p><i><b>Summary: </b></i><%= recipe.summary%></p>
-        <p>Styles:<%= render recipe.styles %></p>
-        <p>Ingredients:<%= render recipe.ingredients %></p>
+        <% if recipe.styles.any? %>
+          <p>Styles:<%= render recipe.styles %></p>
+        <% end %>
+        <% if recipe.ingredients.any? %>
+          <p>Ingredients:<%= render recipe.ingredients %></p>
+        <% end %>
         <p><i><b>Description: </b></i><%= recipe.description%></p>
         <p>
           <span class="quite">
@@ -56,9 +63,9 @@
     </td>
     <td style="width:20%;">
       <!-- <div style="padding-left:5px; padding-right:5px;"> -->
-        <section style="padding-left:5px; padding-right:5px;" class="center">
-          <%= image_tag(recipe.picture.url, size: "210x180", class: "gravatar") if recipe.picture? %> 
-        </section>
+        <div style="padding-left:5px; padding-right:5px; padding-bottom:5px; padding-top:5px;" class="center">
+          <%= image_tag(recipe.picture.url, size: "200x160", class: "gravatar") if recipe.picture? %> 
+        </div>
       <!-- </div> -->
     </td>
   </tr>
@@ -116,4 +123,6 @@
 <% end %> <!-- Act as Comment (end for if false)-->
 
 
-<%= will_paginate %>
+<div class="center">
+  <%= will_paginate %>
+</div>

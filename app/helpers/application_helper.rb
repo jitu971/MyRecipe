@@ -5,4 +5,9 @@ module ApplicationHelper
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
     image_tag(gravatar_url, alt: chef.chefname, class: "gravatar")
   end 
+
+  
+  
+  # favicon_link_tag 'mb-icon.png', rel: 'apple-touch-icon', type: 'image/png'
+
 end

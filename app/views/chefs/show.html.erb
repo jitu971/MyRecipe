@@ -1,7 +1,52 @@
-<%= render 'shared/page_title', title: "Chef: " + @chef.chefname %>
+<% if false %>
+  <%= render 'shared/page_title', title: "Chef: " + @chef.chefname %>
+<% end %>
 
+<%= render 'shared/page_title', title: "Chef Detail"%>
+
+<table>
+  <tr>
+    <td style="width:30%">
+      <div class="center" style="padding-top:30px;">
+      <%= gravatar_for @chef, size: 200 %>  
+      <font color="#DC143C"><h5><i>Chef Name: <%= @chef.chefname %></i></h5> </font>
+      </div>
+    </td>
+    <td> 
+        <div align="center" class="div_chef_recipes_show">
+        <% if @recipes.exists? %>
+          <% if @recipes.count >= 3 %>
+            <%= will_paginate @recipes %>
+            <% @recipes.each do |recipe| %>
+              <h4>
+                <i><b>Recipe:</b></i>
+                <%= link_to recipe.name, recipe_path(recipe) %>
+              </h4>
+            <% end %>
+          <% else %>
+            <div style="padding-top:50px;">
+              <% @recipes.each do |recipe| %>
+                <h4>
+                  <i><b>Recipe:</b></i>
+                  <%= link_to recipe.name, recipe_path(recipe) %>
+                </h4>
+              <% end %>
+            </div>
+          <% end %>  
+        <% else %>
+          <div style="padding-top:50px;">
+            <h2><i><b>Create Your First Recipe......</b></i></h2>
+          </div>
+        <% end %>
+        </div>
+    </td>
+  </tr>
+</table>
+
+
+
+<% if false %>
 <div class="row">
-
   <div class="col-md-4 col-lg-offset-4 center">
     <%= gravatar_for @chef, size: 200 %>
     <hr/> 
@@ -47,4 +92,4 @@
     </div>
   </div>
 <% end %>
-
+<% end %>

@@ -30,6 +30,10 @@ body{
   padding-top: 80px;
 }
 
+.heading{
+  color:#A52A2A
+}
+
 .nav_item{
   margin-left: 25px;
   float: left;
@@ -146,6 +150,10 @@ input, textarea, select, uneditable-input{
   margin-bottom: 15px; 
 }
 
+.input_checkbox input{
+  width: auto !important;
+}
+
 input{
   height: auto;
 }
@@ -175,7 +183,31 @@ table td, table th {
   padding-right:10px;
 }
 
+.td_image_padding_updown{
+  padding-top:10px; 
+  padding-bottom:10px;
+}
+
 .td_button_padding{
   padding-top:5px;
   padding-bottom:5px;
+}
+
+.div_chef_table{
+  border: 1px solid #A52A2A;
+  border-radius: 30px;
+}
+
+.div_chef_recipes_show{
+  border: 1px solid #A52A2A; 
+  border-radius: 20px;
+  background-color:#E6E6FA;
+  height:250px;
+}
+
+.no_recipe{
+  height:150px; 
+  padding-top:55px;
+  border: 1px solid #A52A2A; 
+  border-radius: 30px;
 }

@@ -9,9 +9,13 @@
     </td>
     <td style="text-align:center">
       <div class="td_button_padding">
-        <% if logged_in? && @recipe.chef == current_user %>
+        <% if current_user.admin? %>
+          <%= link_to "Delete Recipe", @recipe, class: "btn btn-warning", method: :delete, data: {confirm: "Are You Sure?"} %> 
+        <% end %>
+        <% if logged_in? && (@recipe.chef == current_user || current_user.admin?) %>
           <%= link_to "EditRecipe", edit_recipe_path(@recipe), class: "btn btn-success" %>
         <% end %>
+
       </div>
     </td>
   </tr>
@@ -20,17 +24,19 @@
       <div class="td_image_padding">
         <section class="chef_info center">
           <%= link_to gravatar_for(@recipe.chef, size: 160), chef_path(@recipe.chef)%>
-          <p>
-            <h5>Brought to you by: <%= @recipe.chef.chefname %></h5>
-          </p> 
+            <font color="#DC143C"><h5><i>Brought to you by: <%= @recipe.chef.chefname %></i></h5> </font>
         </section> 
       </div>
     </td>
     <td style="width:60%">
       <div style="padding-left:20px; padding-right:20px;">
       <h3 style="text-align:center"><i><u><%= @recipe.summary %></u></i></h3>
-      <p>Styles:<%= render @recipe.styles %></p>
-      <p>Ingredients:<%= render @recipe.ingredients %></p>
+      <% if @recipe.styles.any? %>
+        <p><b>Styles:</b><%= render @recipe.styles %></p>
+      <% end %>
+      <% if @recipe.ingredients.any? %>
+        <p><b>Ingredients:</b><%= render @recipe.ingredients %></p>
+      <% end %>
       <p>
         <strong>Steps:</strong>
       </p>
