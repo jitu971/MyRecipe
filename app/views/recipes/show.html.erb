@@ -9,7 +9,7 @@
     </td>
     <td style="text-align:center">
       <div class="td_button_padding">
-        <% if current_user.admin? %>
+        <% if logged_in? && current_user.admin? %>
           <%= link_to "Delete Recipe", @recipe, class: "btn btn-warning", method: :delete, data: {confirm: "Are You Sure?"} %> 
         <% end %>
         <% if logged_in? && (@recipe.chef == current_user || current_user.admin?) %>
