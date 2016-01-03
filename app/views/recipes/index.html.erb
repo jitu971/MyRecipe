@@ -10,67 +10,78 @@
 </ul>
 
 
-<div class="center">
-  <%= will_paginate %>
-</div>
+<% if @recipes.any? %>
+  <p></p>
+  <div class="center">
+    <%= will_paginate %>
+  </div>
 
-<table>
-  <% @recipes.each do |recipe| %>
-  <tr>
-    <td style="width:15%;"> 
-      <div style="padding-left:5px; padding-right:5px;">
-        <section class="chef_info center">
-          <%= link_to gravatar_for(recipe.chef, size: 130), chef_path(recipe.chef) %>
-          <h5>Chef name: <%= recipe.chef.chefname%></h5>
-        </section>
-      </div>
-    </td>
-    <td style="width:65%;">
-      <div class="well">     
-        <h4>
-          <i><b>Name:</b></i>
-          <%= link_to recipe.name, recipe_path(recipe) %>
-        </h4>
-        <p><i><b>Summary: </b></i><%= recipe.summary%></p>
-        <% if recipe.styles.any? %>
-          <p>Styles:<%= render recipe.styles %></p>
-        <% end %>
-        <% if recipe.ingredients.any? %>
-          <p>Ingredients:<%= render recipe.ingredients %></p>
-        <% end %>
-        <p><i><b>Description: </b></i><%= recipe.description%></p>
-        <p>
-          <span class="quite">
-            <small>
-              Created: <%= time_ago_in_words(recipe.created_at)%> ago,
-            </small>
-          </span>
-          <span class="quite">
-            <small>
-              Updated: <%= time_ago_in_words(recipe.updated_at)%>
-            </small>
-          </span>
-        </p>
-        <div class="pull-right">
-          <%= link_to like_recipe_path(recipe, like: true), method: :post do %>
-            <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= recipe.thumbs_up_total %> 
-          <% end %> &nbsp&nbsp&nbsp&nbsp
-          <%= link_to like_recipe_path(recipe, like: false), method: :post do %>
-            <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp <%= recipe.thumbs_down_total %> 
-          <% end %> 
+  <table>
+    <% @recipes.each do |recipe| %>
+    <tr>
+      <td style="width:15%;"> 
+        <div style="padding-left:5px; padding-right:5px;">
+          <section class="chef_info center">
+            <%= link_to gravatar_for(recipe.chef, size: 130), chef_path(recipe.chef) %>
+            <h5>Chef name: <%= recipe.chef.chefname%></h5>
+          </section>
         </div>
-      </div>
-    </td>
-    <td style="width:20%;">
-      <!-- <div style="padding-left:5px; padding-right:5px;"> -->
-        <div style="padding-left:5px; padding-right:5px; padding-bottom:5px; padding-top:5px;" class="center">
-          <%= image_tag(recipe.picture.url, size: "200x160", class: "gravatar") if recipe.picture? %> 
+      </td>
+      <td style="width:65%;">
+        <div class="well">     
+          <h4>
+            <i><b>Name:</b></i>
+            <%= link_to recipe.name, recipe_path(recipe) %>
+          </h4>
+          <p><i><b>Summary: </b></i><%= recipe.summary%></p>
+          <% if recipe.styles.any? %>
+            <p>Styles:<%= render recipe.styles %></p>
+          <% end %>
+          <% if recipe.ingredients.any? %>
+            <p>Ingredients:<%= render recipe.ingredients %></p>
+          <% end %>
+          <p><i><b>Description: </b></i><%= recipe.description%></p>
+          <p>
+            <span class="quite">
+              <small>
+                Created: <%= time_ago_in_words(recipe.created_at)%> ago,
+              </small>
+            </span>
+            <span class="quite">
+              <small>
+                Updated: <%= time_ago_in_words(recipe.updated_at)%>
+              </small>
+            </span>
+          </p>
+          <div class="pull-right">
+            <%= link_to like_recipe_path(recipe, like: true), method: :post do %>
+              <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= recipe.thumbs_up_total %> 
+            <% end %> &nbsp&nbsp&nbsp&nbsp
+            <%= link_to like_recipe_path(recipe, like: false), method: :post do %>
+              <i class="glyphicon glyphicon-thumbs-down"></i>&nbsp <%= recipe.thumbs_down_total %> 
+            <% end %> 
+          </div>
         </div>
-      <!-- </div> -->
-    </td>
-  </tr>
+      </td>
+      <td style="width:20%;">
+        <!-- <div style="padding-left:5px; padding-right:5px;"> -->
+          <div style="padding-left:5px; padding-right:5px; padding-bottom:5px; padding-top:5px;" class="center">
+            <%= image_tag(recipe.picture.url, size: "200x160", class: "gravatar") if recipe.picture? %> 
+          </div>
+        <!-- </div> -->
+      </td>
+    </tr>
   <% end %>
-</table>
+  </table>
+
+<% else %>
+  <p></p>
+  <div class="center no_recipe">
+    <b><i>No Recipe For Ingredient (<%= @ingredient.name %>) ..............</i></b>
+  </div>
+
+<% end %>
+
 
 
 <!-- Act as Comment (if false)-->

@@ -8,8 +8,8 @@
     <%= link_to "Chefs", chefs_path %>
   </li>
 </ul>
-<p></p>
 
+<p></p>
 <% if @ingredient.recipes.any? %> 
   <%= will_paginate @recipes%>
   <table>
